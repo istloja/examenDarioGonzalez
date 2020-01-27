@@ -14,12 +14,12 @@ exports.listarProvincia = (req,res)=>{
 exports.crearProvincia = (req,res)=>{
   const nuevaProvincia = new modeloProvincia({
 
-    idpais:req.body.idpais,
+    idprovincia:req.body.idprovincia,
     nombre:req.body.nombre,
-    moneda:req.body.moneda,
+    nCantones:req.body.nCantones,
     superficie:req.body.superficie,
-    idioma:req.body.idioma,
-    nHabitantes:req.body.nHabitantes
+    region:req.body.region,
+    idpais:req.body.idpais
 
   });
 
@@ -31,3 +31,15 @@ exports.crearProvincia = (req,res)=>{
     }
   });
 };
+
+exports.obtenerProvinciaIdPais = (req, res)=>{
+  const idPais = req.body.idpais
+
+  modeloProvincia.obtenerProvinciaIdPais(idPais,(error, data)=>{
+    if(error){
+      res.status(500).send({mensaje:'no se pudo obtener las provincias'});
+    }else{
+      res.send(data);
+    }
+  })
+}

@@ -1,4 +1,7 @@
 module.exports = app =>{
-  const pais = require('../controlador/provincia.js');
-  app.get('/listarProvincias',pais.listarProvincia);
+  const provincia = require('../controlador/provincia.js');
+  app.get('/listarProvincias',provincia.listarProvincia);
+  app.post('/crearProvincia',provincia.crearProvincia);
+  app.post('/obtenerProvinciaIdPais',provincia.obtenerProvinciaIdPais);
+
 }

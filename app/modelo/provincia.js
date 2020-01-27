@@ -21,11 +21,24 @@ provincia.listarProvincia = result =>{
   });
 };
 
-provincia.crearPais = (nuevoProvincia,result) =>{
+provincia.crearProvincia = (nuevaProvincia,result) =>{
   mysql.query('INSERT INTO provincia SET ?',nuevaProvincia,(error,res)=>{
     if (error) {
       result(null, error);
       console.log(error, ' no se pude crear la provincia');
+      return;
+    }else{
+      result(null, res);
+    }
+  });
+};
+
+
+provincia.obtenerProvinciaIdPais = (idPais, result)=>{
+  mysql.query('SELECT * FROM provincia WHERE idpais = ?', idPais, (error, res)=>{
+    if (error) {
+      result(null, error);
+      console.log(error, ' no se pude obtener las provincias');
       return;
     }else{
       result(null, res);
